@@ -48,11 +48,6 @@ var _hmt = _hmt || [];
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
   </style>
-
- 
-  
-  <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
-  <script>AV.initialize("mAPYgk1QG5hFvyqDDmd3BHql-gzGzoHsz", "50jNkaewief3pmDJnJevarU8");</script>
   
 </head>
 
@@ -342,23 +337,10 @@ c2(no)->op2->e</textarea><textarea id="flowchart-0-options" style="display: none
   
 
   
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2018/01/09/流程图/",
-  owner: 'daphniscc',
-  repo: 'https://daphniscc.github.io/',
-  oauth: {
-    client_id: '8b730550096e71919166',
-    client_secret: '0c621f82ff8f143e80a373a7769f666310cbcc76',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
 
+
+阅读数:
+    <span id="/2018/01/09/流程图/" class="leancloud_visitors" data-flag-title="流程图"></span>次
 
           </div>
         </div>
@@ -375,6 +357,52 @@ gitment.render('gitment-ctn')
     </div>
   </div>
 </footer>
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+
+  var script=document.createElement("script");  
+script.type="text/javascript";  
+script.src="http://code.jquery.com/jquery-1.11.1.js";  
+document.getElementsByTagName('head')[0].appendChild(script); 
+
+    var APP_ID = 'mAPYgk1QG5hFvyqDDmd3BHql-gzGzoHsz';
+    var APP_KEY = '50jNkaewief3pmDJnJevarU8';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count 
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+   // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
     </div>
     <script>
 	var yiliaConfig = {
@@ -399,75 +427,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 
 
-<!--page counter part-->
-<script>
-function addCount (Counter) {
-        url=$('.article-date').attr('href').trim();
-        title = $('.article-title').text().trim();
-        var query=new AV.Query(Counter);
-        //use url as unique idnetfication
-        query.equalTo("url",url);
-        query.find({
-            success: function(results){
-                if(results.length>0)
-                {
-                    var counter=results[0];
-                    counter.fetchWhenSave(true); //get recent result
-                    counter.increment("time");
-                    counter.save();
-                }
-                else
-                {
-                    var newcounter=new Counter();
-                    newcounter.set("title",title);
-                    newcounter.set("url",url);
-                    newcounter.set("time",1);
-                    newcounter.save(null,{
-                        success: function(newcounter){
-                        //alert('New object created');
-                        },
-                        error: function(newcounter,error){
-                        alert('Failed to create');
-                        }
-                        });
-                }
-            },
-            error: function(error){
-                //find null is not a error
-                alert('Error:'+error.code+" "+error.message);
-            }
-        });
-}
-$(function(){
-        var Counter=AV.Object.extend("Counter");
-        //only increse visit counting when intering a page
-        if ($('.article-title').length == 1)
-           addCount(Counter);
-        var query=new AV.Query(Counter);
-        query.descending("time");
-        // the sum of popular posts
-        query.limit(10); 
-        query.find({
-            success: function(results){
-                    for(var i=0;i<results.length;i++)    
-                    {
-                        var counter=results[i];
-                        title=counter.get("title");
-                        url=counter.get("url");
-                        time=counter.get("time");
-                        // add to the popularlist widget
-                        showcontent=title+" ("+time+")";
-                        //notice the "" in href
-                        $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
-                    }
-                },
-            error: function(error){
-                alert("Error:"+error.code+" "+error.message);
-            }
-            }
-        )
-        });
-</script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
