@@ -353,7 +353,7 @@ var _hmt = _hmt || [];
 
 
 阅读数:
-    <span id="/2018/01/04/react学习笔记/" class="leancloud_visitors" data-flag-title="react学习笔记"></span>次
+    <span id="/2018/01/04/react学习笔记/" class="leancloud_visitors" data-flag-title="react学习笔记">111</span>次
 
           </div>
         </div>
@@ -370,52 +370,7 @@ var _hmt = _hmt || [];
     </div>
   </div>
 </footer>
-<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
-<script>
 
-  var script=document.createElement("script");  
-script.type="text/javascript";  
-script.src="http://code.jquery.com/jquery-1.11.1.js";  
-document.getElementsByTagName('head')[0].appendChild(script); 
-
-    var APP_ID = 'mAPYgk1QG5hFvyqDDmd3BHql-gzGzoHsz';
-    var APP_KEY = '50jNkaewief3pmDJnJevarU8';
-    AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
-    });
-    // 显示次数
-    function showTime(Counter) {
-        var query = new AV.Query("Counter");
-        if($(".leancloud_visitors").length > 0){
-            var url = $(".leancloud_visitors").attr('id').trim();
-            // where field
-            query.equalTo("words", url);
-            // count 
-            query.count().then(function (number) {
-                // There are number instances of MyClass where words equals url.
-                $(document.getElementById(url)).text(number?  number : '--');
-            }, function (error) {
-                // error is an instance of AVError.
-            });
-        }
-    }
-   // 追加pv
-    function addCount(Counter) {
-        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
-        var Counter = AV.Object.extend("Counter");
-        var query = new Counter;
-        query.save({
-            words: url
-        }).then(function (object) {
-        })
-    }
-    $(function () {
-        var Counter = AV.Object.extend("Counter");
-        addCount(Counter);
-        showTime(Counter);
-    });
-</script>
     </div>
     <script>
 	var yiliaConfig = {
